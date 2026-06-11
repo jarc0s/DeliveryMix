@@ -1,3 +1,5 @@
+// swift-tools-version:6.0
+
 import PackageDescription
 
 let package = Package(
@@ -27,7 +29,10 @@ let package = Package(
                 "Core", "Auth", "Home", "StoreDetail", "Cart",
                 "Address", "Checkout", "OrderTracking", "Profile", "UIComponents"
             ],
-            path: "Sources"
+            path: "Sources",
+            resources: [
+                .process("Resources"),
+            ]
         ),
     ]
 )

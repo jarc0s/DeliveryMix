@@ -3,12 +3,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "Home",
+    name: "Checkout",
     platforms: [
         .iOS(.v16),
     ],
     products: [
-        .library(name: "Home", targets: ["Home"]),
+        .library(name: "Checkout", targets: ["Checkout"]),
     ],
     dependencies: [
         .package(path: "../../Core"),
@@ -16,14 +16,9 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Home",
+            name: "Checkout",
             dependencies: ["Core", "UIComponents"],
             path: "Sources"
-        ),
-        .testTarget(
-            name: "HomeTests",
-            dependencies: ["Home"],
-            path: "Tests"
         ),
     ]
 )

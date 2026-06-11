@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8CA619602FC5600000099925 /* App in Frameworks */ = {isa = PBXBuildFile; productRef = 8CA619622FC5600000099925 /* App */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		8CA619402FC51E8700099925 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CA619602FC5600000099925 /* App in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = DeliveryMix;
 			packageProductDependencies = (
+				8CA619622FC5600000099925 /* App */,
 			);
 			productName = DeliveryMix;
 			productReference = 8CA619322FC51E8600099925 /* DeliveryMix.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = 8CA619292FC51E8600099925;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8CA619612FC5600000099925 /* XCLocalSwiftPackageReference "App" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8CA619332FC51E8600099925 /* Products */;
 			projectDirPath = "";
@@ -570,6 +579,21 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		8CA619612FC5600000099925 /* XCLocalSwiftPackageReference "App" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = App;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8CA619622FC5600000099925 /* App */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8CA619612FC5600000099925 /* XCLocalSwiftPackageReference "App" */;
+			productName = App;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8CA6192A2FC51E8600099925 /* Project object */;
 }

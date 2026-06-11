@@ -7,11 +7,8 @@
 
 import SwiftUI
 
-@main
-struct DeliveryMixApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+struct DeliveryMixLegacyRootView: View {
+    var body: some View {
+        ContentView()
     }
 }

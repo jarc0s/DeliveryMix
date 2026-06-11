@@ -1,3 +1,5 @@
+// swift-tools-version:6.0
+
 import PackageDescription
 
 let package = Package(
@@ -8,9 +10,9 @@ let package = Package(
     products: [
         .library(name: "Core", targets: ["Core"]),
     ],
-    dependencies:[
+    dependencies: [
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.25.0"),
-    ]
+    ],
     targets: [
         .target(
             name: "Core",

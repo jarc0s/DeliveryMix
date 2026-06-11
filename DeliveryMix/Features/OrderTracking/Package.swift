@@ -3,12 +3,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "Home",
+    name: "OrderTracking",
     platforms: [
         .iOS(.v16),
     ],
     products: [
-        .library(name: "Home", targets: ["Home"]),
+        .library(name: "OrderTracking", targets: ["OrderTracking"]),
     ],
     dependencies: [
         .package(path: "../../Core"),
@@ -16,14 +16,9 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Home",
+            name: "OrderTracking",
             dependencies: ["Core", "UIComponents"],
             path: "Sources"
-        ),
-        .testTarget(
-            name: "HomeTests",
-            dependencies: ["Home"],
-            path: "Tests"
         ),
     ]
 )
