@@ -1,49 +1,49 @@
-import SwiftUI
-import FirebaseCore
 import Core
+import FirebaseCore
+import SwiftUI
+import Auth
 
-public final class AppDelegate: NSObject, UIApplicationDelegate {
-    public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        if let filePath = Bundle.module.path(forResource: "GoogleService-Info", ofType: "plist"),
-           let options = FirebaseOptions(contentsOfFile: filePath) {
-            FirebaseApp.configure(options: options)
-        } else {
-            FirebaseApp.configure()
-        }
+//public final class AppDelegate: NSObject, UIApplicationDelegate {
+//    public func application(
+//        _ application: UIApplication,
+//        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
+//    ) -> Bool {
+//        FirebaseApp.configure()
+//        print("✅ Firebase configured")
+//        return true
+//    }
+//}
 
-        return true
+// MARK: - Wrapper para UINavigationController
+struct NavigationControllerWrapper: UIViewControllerRepresentable {
+    let navigationController: UINavigationController
+    
+    func makeUIViewController(context: Context) -> UINavigationController {
+        return navigationController
     }
+    
+    func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {}
 }
 
-@main
-public struct DeliveryApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+public struct AppView: View {  // ← Renombrado y sin @main
+    private let navigationController = UINavigationController()
 
     public init() {}
-
-    public var body: some Scene {
-        WindowGroup {
-            AppRootView()
+    
+    public var body: some View {  // ← Devuelve View, no Scene
+            NavigationControllerWrapper(navigationController: navigationController)
+                .edgesIgnoringSafeArea(.all)
+                .onAppear {
+                    setupRootView()
+                }
         }
-    }
-}
 
-private struct AppRootView: View {
-    var body: some View {
-        NavigationStack {
-            VStack(spacing: 12) {
-                Image(systemName: "shippingbox.fill")
-                    .font(.system(size: 44))
-                    .foregroundStyle(.tint)
-
-                Text("DeliveryMix")
-                    .font(.title.bold())
-
-                Text("App package integrado")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            }
-            .padding()
-        }
+    @MainActor
+    private func setupRootView() {
+        let container = AppDependencyContainer(navigationController: navigationController)
+        let loginViewModel = container.makeLoginViewModel()
+        let loginView = LoginView(viewModel: loginViewModel)
+        let hostingController = UIHostingController(rootView: loginView)
+        navigationController.setViewControllers([hostingController], animated: false)
     }
 }
